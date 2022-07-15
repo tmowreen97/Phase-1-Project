@@ -4,7 +4,6 @@
     <title>Random Activites</title> 
     <link rel="stylesheet" type ="text/css" href="./style.css">
   </head>
-  <!-- <script src="./src/index.js">defer</script> -->
   <body> 
     <div id="main">
       <h1>Rand-tivities</h1> 
@@ -12,7 +11,6 @@
         <h2>Pick a Category</h2>
         <form id="form">
           <label for="type"></label>
-          <!-- <h3>Category</h3> -->
           <select name="type" id="category" onchange="getSelectedValue();">
             <option value="none" selected disabled hidden>Select an Option</option>
             <option value="busywork">busywork</option>
@@ -25,7 +23,6 @@
             <option value="relaxation">relaxation</option>
             <option value="social">social</option>
           </select>
-          <!-- <input type ="text" id="partySize" name="party" placeholder="Party Size up to 5" value=""> -->
           <input type="submit" value="enter">
           <script>
             var selected
@@ -35,15 +32,13 @@
           </script>
         </form>
       </div>
-
       <script src="./src/index.js"></script>
     </div>
-    <div id="activity">
+    <div id="activity" hidden="hidden">
       <button id="likeBtn" hidden = 'hidden'>Add to Liked</button>
     </div>
     <div id="likeSection" hidden="hidden">
       <h3>Liked</h3>
-
     </div>
   
   </body>

@@ -1,55 +1,64 @@
 //DOM ELEMENTS 
 let main = document.getElementById('main')
 let body = document.getElementsByTagName('body')
-let activityBox = document.getElementById('activity')
 let ul = document.createElement('ul')
-var arr =[]
-
-
 
 //FUNCTIONS
 
 //RANDOMIZATION
+//Function that produces a random number
 function getRandom(min,max){
   let step1=max-min+1;
   let step2= Math.random()*step1;
+  //Math.random() gives a decimal number between 0 and 1 (Math.random()= 0.23432)
   let result =Math.floor(step2)+min;
+  //Math.floor() gives the nearest whole number (Math.floor(2.4657)=2)
   return result
 }
 
-
-//FETCH ITEM FUNCTION fetches object from API
-//This fetch gives us one object each time we call it, so we add that object to an array given as the argument.
-//The category is the filter used for the activity, it'll only fetch an activity with the category given as the argument.
-let fetchItem = function (arr, category){
-  fetch(`http://www.boredapi.com/api/activity?type=${category}`)
-  .then (res=>res.json())
-  .then(function(obj){
-    var arr = []
-    arr.push(obj.activity)
-    addToDOM(arr)
-  })
-}
-
-//MAKE ARRAY FUNCTION appends activity onto DOM 
-//Initiated when enter button clicked
-function makeArray (category){
-  for (let i =0; i<=5; i++){
-    fetchItem(arr,category)
-  }
-  document.getElementById('activity').append(ul)
-}
-
-
-
+//ADD TO DOM takes in an array as an argument.
+//Selects a random element from the array (calling getRandom()) whos value is then assigned to a DOM unordered list element.
 function addToDOM(arr){
   let index= getRandom(0, arr.length-1)
   ul.innerText=arr[index]
 }
 
-  
+//FETCH ITEM fetches object from API
+//The fetch request method returns the activity portion of the object from the API, and is then added to an array that is taken in as an argument.
+//*ARRAY ITERATION* Using .filter() and .indexOf() methods a new array is formed by adding elements from the original array, filtering out the duplicates. 
+//Calls addToDOM on the new array
+let fetchItem = function (arr, category){
+  fetch(`http://www.boredapi.com/api/activity?type=${category}`)
+  .then (res=>res.json())
+  .then(function(obj){
+    arr.push(obj.activity)
+    const nodupe = arr.filter((value,index)=>{
+      return arr.indexOf(value)===index;
+    })
+    addToDOM(nodupe)})
+}
 
-//SUBMIT FUNCTION ON 'PICK SOMETHING' ENTER BUTTON
+//MAKE ARRAY loops through fetchItem function to create an array of random activities and add that to the DOM
+//Initiated when enter button clicked.
+//Takes a category as an argument based on user selection.
+//Removes hidden attribute on Activity Box, making it visible on the DOM.
+function makeArray (category){
+  let arr=[]
+  for (let i =0; i<=8; i++){
+    fetchItem(arr,category)
+  }
+  let element = document.getElementById('activity')
+  let hidden = element.getAttribute('hidden')
+  if (hidden) {
+    element.removeAttribute("hidden");
+  }
+  document.getElementById('activity').prepend(ul)
+
+}
+
+//SUBMIT FORM callback function for enter button event listener
+//Calls makeArray function using user category selection as argument.
+//Adds and removes hidden attribute to 'Add to Liked' button, making it visible on the DOM below the displayed activity
 function submitForm(e){
   e.preventDefault()
   makeArray(selected)
@@ -63,7 +72,7 @@ function submitForm(e){
 //DOMCONTENTLOADED
 document.addEventListener('DOMContentLoaded', ()=>{
 
-  //EVENT LISTENER, SUBMITTING PICK SOMETHING (SUBMIT)
+  //EVENT LISTENER, SUBMITTING CATEGORY SELECTION (SUBMIT)
   document.querySelector('form').addEventListener('submit', submitForm)
 
   //EVENT LISTENER, ADDING LIKES (CLICK)

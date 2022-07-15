@@ -1,11 +1,22 @@
+/* HEADINGS */
 h1{
   font-family:'Courier New', Courier, monospace;
   font-size: 400%;
   font-weight:200px;
 }
-h2,h3,h4 {
+h2,h3 {
   font-family: Georgia, 'Times New Roman', Times, serif;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+h3{
+  font-size: medium;
+}
+
+/* BODY */
 body{
   background-color: cornflowerblue;
 }
@@ -18,50 +29,52 @@ body{
   border: 1px solid #333;
   background: rgba(255, 255, 255, 0.3);
   padding: 15px 20px 18px 18px;
-  border-radius: 5px;
-  /* box-shadow: 2px 5px 5px #333; */
+  border-radius: 20px;
+  margin: 30px;
 }
+
 #activity {
-  position:sticky;
-  display: flex;
+  position:relative;
+  /* display:block; */
   justify-content: center;
   text-align: center;
   align-items:center;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 100%;
-  font-weight:100px;
-  padding: 100px 100px 80px 80px;
-  background:rgb(240, 248, 255);
+  border: 1px solid #333;
+  padding: 100px 150px 80px 150px;
+  background:rgba(255, 255, 255, 0.45);
+  margin: 30px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 20px;
 
 }
 ul{
   text-align: center;
+  padding: 0%;
+  font-size: 100%;
 
 }
+
 #filters {
   margin: 10px;
   border: 1px solid #333;
   background: rgba(255, 255, 255, 0.75);
   padding: 15px 20px 18px 18px;
-  border-radius: 5px;
-  /* box-shadow: 2px 5px 5px #333; */
-}
-h2, h3{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-#filters {
 	background:rgba(255, 255, 255, 0.615);
-	border-radius: 25px;
+	border-radius: 20px;
 }
 
 #likeSection {
-  background:rgba(255, 255, 255, 0.615);
-  margin: 50px;
+  background:rgba(255, 255, 255, 0.6);
+  margin: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
   text-align: center;
-  padding: 15px 20px 18px 18px;
-  border-radius: 5px;
+  padding: 10px 10px 30px 10px;
+  border-radius: 20px;
+  border: 1px solid #333;
+  font-size: 100%;
 
 }
