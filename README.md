@@ -19,6 +19,6 @@ The *Pick a Category* box has a drop-down list with a prefilled text 'Select an 
 * relaxation
 * social
 
-Once an option is selected and the user clicks enter, a random activity from the API is displayed in the box below *Pick a Category*. The random activity also has an 'Add to Liked' button on the side. If the user clicks on that, another box appears on the bottom labeled *Liked*. That same activity is then listed in the *Liked* box as part of an unordered list. The user can select different categories and get as many activities they'd like to. They can also add as many activities to their *Liked* section. This *Liked* box will keep its contents, until the page is refreshed.
+Once an option is selected and the user clicks enter, a random activity from the API is displayed in the box below *Pick a Category*. The random activity also has an 'Add to Liked' button below it. If the user clicks on that, another box appears on the bottom labeled *Liked*. That same activity is then listed in the *Liked* box as part of a bulleted list. The user can select different categories and get as many activities as they'd like to. They can also add as many activities to their *Liked* section. This *Liked* box will keep its contents, until the page is refreshed.
 
 With a page like this, you'll always find something to do!
